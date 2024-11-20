@@ -55,6 +55,13 @@ export default function ProfilePage() {
     setShowAddSkill(false); // Hide the form after adding a skill
   };
 
+  // Delete skill from the list and update localStorage
+  const handleDeleteSkill = (index: number) => {
+    const updatedSkills = skills.filter((_, i) => i !== index);
+    setSkills(updatedSkills);
+    localStorage.setItem("skills", JSON.stringify(updatedSkills));
+  };
+
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
       {/* Profile Details */}
@@ -180,11 +187,17 @@ export default function ProfilePage() {
                   </div>
                 </div>
                 <p className="text-gray-700 mb-4">{skill.description}</p>
-                <div className="flex space-x-2">
+                <div className="flex space-x-2 mb-4">
                   <span className="text-sm bg-gray-200 px-2 py-1 rounded">
                     {skill.tags}
                   </span>
                 </div>
+                <button
+                  onClick={() => handleDeleteSkill(index)}
+                  className="bg-red-300 text-sm bg-gray-200 px-2 py-1 rounded"
+                >
+                  Delete
+                </button>
               </div>
             ))}
           </div>

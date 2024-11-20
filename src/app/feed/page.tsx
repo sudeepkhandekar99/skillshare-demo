@@ -13,6 +13,7 @@ const tags = [
   "Skating",
   "Cooking",
 ];
+
 const feedData = [
   // Math Tutor
   {
@@ -166,13 +167,128 @@ const feedData = [
       "Ace your coding interviews with mock sessions and problem-solving techniques tailored to top tech companies.",
   },
 
-  // Add more names and dummy data for Soccer, Skating, and Cooking similarly...
-];
+  // Soccer
+  {
+    name: "Alex Turner",
+    profilePicture: "/img/profile2.jpg",
+    location: "Dallas",
+    title: "Soccer Basics for Beginners",
+    tags: ["Soccer"],
+    description:
+      "Learn soccer fundamentals, including dribbling, passing, and shooting techniques for new players.",
+  },
+  {
+    name: "Chris Walker",
+    profilePicture: "/img/profile3.jpg",
+    location: "Houston",
+    title: "Soccer Drills for Young Athletes",
+    tags: ["Soccer"],
+    description:
+      "Specialized soccer drills to improve skills and build confidence for young athletes.",
+  },
+  {
+    name: "Jessica Carter",
+    profilePicture: "/img/profile1.jpg",
+    location: "Phoenix",
+    title: "Team Strategy Coaching",
+    tags: ["Soccer"],
+    description:
+      "Focus on team strategies and tactics to enhance your soccer performance during matches.",
+  },
+  {
+    name: "Daniel Moore",
+    profilePicture: "/img/profile2.jpg",
+    location: "Orlando",
+    title: "Advanced Soccer Training",
+    tags: ["Soccer"],
+    description:
+      "Intensive soccer training for advanced players aiming to excel in competitive leagues.",
+  },
 
+  // Skating
+  {
+    name: "Rebecca Gray",
+    profilePicture: "/img/profile3.jpg",
+    location: "Portland",
+    title: "Skating for Beginners",
+    tags: ["Skating"],
+    description:
+      "Get started with skating basics, including balance, stopping, and turns for all ages.",
+  },
+  {
+    name: "Ryan Adams",
+    profilePicture: "/img/profile1.jpg",
+    location: "Denver",
+    title: "Skateboarding Tricks",
+    tags: ["Skating"],
+    description:
+      "Learn cool skateboarding tricks like ollies, kickflips, and grinds from an experienced coach.",
+  },
+  {
+    name: "Natalie Lee",
+    profilePicture: "/img/profile2.jpg",
+    location: "San Francisco",
+    title: "Roller Skating Fun",
+    tags: ["Skating"],
+    description:
+      "Fun and engaging roller skating lessons for kids and adults to enjoy the ride.",
+  },
+  {
+    name: "Henry Scott",
+    profilePicture: "/img/profile3.jpg",
+    location: "Salt Lake City",
+    title: "Skating Fitness Training",
+    tags: ["Skating"],
+    description:
+      "Combine fitness and fun with skating exercises that improve strength and cardio health.",
+  },
+
+  // Cooking
+  {
+    name: "Olivia Bennett",
+    profilePicture: "/img/profile1.jpg",
+    location: "Los Angeles",
+    title: "Home Cooking 101",
+    tags: ["Cooking"],
+    description:
+      "Master basic cooking skills to prepare delicious meals at home with ease.",
+  },
+  {
+    name: "Jack Robinson",
+    profilePicture: "/img/profile2.jpg",
+    location: "New Orleans",
+    title: "Baking Like a Pro",
+    tags: ["Cooking"],
+    description:
+      "Learn professional baking techniques for bread, pastries, and cakes.",
+  },
+  {
+    name: "Emma Clark",
+    profilePicture: "/img/profile3.jpg",
+    location: "Chicago",
+    title: "Healthy Meal Preparation",
+    tags: ["Cooking"],
+    description:
+      "Discover how to prepare healthy, balanced meals with fresh and nutritious ingredients.",
+  },
+  {
+    name: "Liam Wright",
+    profilePicture: "/img/profile1.jpg",
+    location: "Miami",
+    title: "International Cuisine",
+    tags: ["Cooking"],
+    description:
+      "Explore global cuisines like Italian, Indian, and Thai dishes in fun, hands-on classes.",
+  },
+];
 
 export default function Feed() {
   const [selectedTag, setSelectedTag] = useState("All");
   const [selectedLocation, setSelectedLocation] = useState("All");
+  const [showChatModal, setShowChatModal] = useState(false);
+  const [currentContact, setCurrentContact] = useState<string | null>(null);
+  const [message, setMessage] = useState("");
+  const [conversations, setConversations] = useState<{ [key: string]: string[] }>({});
 
   // Extract unique locations from feedData
   const uniqueLocations = ["All", ...new Set(feedData.map((item) => item.location))];
@@ -182,6 +298,24 @@ export default function Feed() {
     const matchesLocation = selectedLocation === "All" || post.location === selectedLocation;
     return matchesTag && matchesLocation;
   });
+
+  const handleContactClick = (name: string) => {
+    setCurrentContact(name);
+    setShowChatModal(true);
+    if (!conversations[name]) {
+      setConversations((prev) => ({ ...prev, [name]: [] }));
+    }
+  };
+
+  const handleSendMessage = () => {
+    if (currentContact && message.trim()) {
+      setConversations((prev) => ({
+        ...prev,
+        [currentContact]: [...prev[currentContact], `You: ${message}`],
+      }));
+      setMessage(""); // Clear input field
+    }
+  };
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">
@@ -234,7 +368,6 @@ export default function Feed() {
               key={index}
               className="border border-gray-300 rounded-lg shadow-md p-4 bg-white"
             >
-              {/* Card Header */}
               <CardHeader className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <img
@@ -246,10 +379,7 @@ export default function Feed() {
                 </div>
                 <p className="text-sm text-gray-600">{post.name} | {post.location}</p>
               </CardHeader>
-
-              {/* Card Content */}
               <CardContent>
-                {/* Tags */}
                 <div className="flex space-x-2 mb-4">
                   {post.tags.map((tag, i) => (
                     <span
@@ -260,19 +390,59 @@ export default function Feed() {
                     </span>
                   ))}
                 </div>
-
-                {/* Description */}
                 <p className="text-gray-700">{post.description}</p>
               </CardContent>
-
-              {/* Card Footer */}
               <div className="mt-4">
-                <Button className="bg-gray-700 text-white hover:bg-gray-800">Contact</Button>
+                <Button
+                  className="bg-gray-700 text-white hover:bg-gray-800"
+                  onClick={() => handleContactClick(post.name)}
+                >
+                  Contact
+                </Button>
               </div>
             </Card>
           ))}
         </div>
       </div>
+
+      {/* Chat Modal */}
+      {showChatModal && currentContact && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full space-y-4">
+            <h2 className="text-xl font-bold">Chat with {currentContact}</h2>
+            <div className="h-48 overflow-y-auto border p-2 rounded">
+              {conversations[currentContact]?.map((msg, idx) => (
+                <p key={idx} className={msg.startsWith("You:") ? "text-right" : "text-left"}>
+                  {msg}
+                </p>
+              ))}
+            </div>
+            <div className="space-y-2">
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Type your message here..."
+                className="w-full border rounded px-3 py-2"
+                rows={2}
+              ></textarea>
+              <div className="flex justify-end space-x-4">
+                <Button
+                  className="bg-gray-500 text-white hover:bg-gray-600"
+                  onClick={() => setShowChatModal(false)}
+                >
+                  Close
+                </Button>
+                <Button
+                  className="bg-green-500 text-white hover:bg-green-600"
+                  onClick={handleSendMessage}
+                >
+                  Send
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
