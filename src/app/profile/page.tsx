@@ -3,6 +3,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+// Define the type for a skill
+type Skill = {
+  location: string;
+  title: string;
+  description: string;
+  tags: string;
+};
+
 const tags = [
   "Math Tutor",
   "Guitar Tutor",
@@ -15,7 +23,7 @@ const tags = [
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState<Skill[]>([]); // Explicitly typed state
   const [showAddSkill, setShowAddSkill] = useState(false);
 
   // Load skills from localStorage when the component mounts
@@ -27,14 +35,14 @@ export default function ProfilePage() {
   }, []);
 
   // Add skill and save it to localStorage
-  const handleAddSkill = (e) => {
+  const handleAddSkill = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const newSkill = {
-      location: formData.get("location"),
-      title: formData.get("title"),
-      description: formData.get("description"),
-      tags: formData.get("tags"),
+    const formData = new FormData(e.currentTarget);
+    const newSkill: Skill = {
+      location: formData.get("location") as string,
+      title: formData.get("title") as string,
+      description: formData.get("description") as string,
+      tags: formData.get("tags") as string,
     };
 
     const updatedSkills = [...skills, newSkill];
@@ -43,7 +51,7 @@ export default function ProfilePage() {
     // Save updated skills to localStorage
     localStorage.setItem("skills", JSON.stringify(updatedSkills));
 
-    e.target.reset();
+    e.currentTarget.reset();
     setShowAddSkill(false); // Hide the form after adding a skill
   };
 
