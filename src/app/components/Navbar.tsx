@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export default function Navbar() {
@@ -14,12 +16,15 @@ export default function Navbar() {
 
       {/* Navigation Links */}
       <div className="space-x-4">
-        <Link href="/signin" className="text-lg hover:text-gray-400">
-          Sign In
+        <Link href="/feed" className="text-lg hover:text-gray-400">
+          Profile
         </Link>
-        <Link href="/signup" className="text-lg hover:text-gray-400">
-          Sign Up
-        </Link>
+        <button
+          className="text-lg hover:text-gray-400"
+          onClick={() => alert("Logout clicked")}
+        >
+          Logout
+        </button>
       </div>
     </nav>
   );
