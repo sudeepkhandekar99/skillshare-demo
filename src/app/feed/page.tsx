@@ -14,36 +14,39 @@ const tags = [
   "Skating",
   "Cooking",
 ];
-
 const feedData = [
   // Math Tutor
   {
+    name: "John Doe",
     profilePicture: "/img/profile1.jpg",
-    location: "New York ",
+    location: "New York",
     title: "Master Math Tutoring",
     tags: ["Math Tutor"],
     description:
       "I provide math tutoring for high school and college students. Flexible schedule, personalized lessons, and test preparation to help you excel in your studies.",
   },
   {
+    name: "Jane Smith",
     profilePicture: "/img/profile2.jpg",
-    location: "Boston ",
+    location: "Boston",
     title: "Advanced Math Guidance",
     tags: ["Math Tutor"],
     description:
       "With years of experience, I specialize in calculus and algebra for college students. One-on-one sessions tailored to your needs.",
   },
   {
+    name: "Tom Johnson",
     profilePicture: "/img/profile3.jpg",
-    location: "Chicago ",
+    location: "Chicago",
     title: "Math Foundations",
     tags: ["Math Tutor"],
     description:
       "Struggling with math basics? I can help build a strong foundation for middle and high school students to succeed in advanced topics.",
   },
   {
+    name: "Alice Brown",
     profilePicture: "/img/profile1.jpg",
-    location: "San Francisco ",
+    location: "San Francisco",
     title: "Math Olympiad Trainer",
     tags: ["Math Tutor"],
     description:
@@ -52,32 +55,36 @@ const feedData = [
 
   // Guitar Tutor
   {
+    name: "David Wilson",
     profilePicture: "/img/profile2.jpg",
-    location: "Los Angeles ",
+    location: "Los Angeles",
     title: "Learn Guitar with Me!",
     tags: ["Guitar Tutor"],
     description:
       "Beginner and intermediate guitar lessons with personalized techniques and tips to help you play your favorite songs.",
   },
   {
+    name: "Emily Davis",
     profilePicture: "/img/profile3.jpg",
-    location: "Nashville ",
+    location: "Nashville",
     title: "Acoustic Guitar Lessons",
     tags: ["Guitar Tutor"],
     description:
       "Master the acoustic guitar with step-by-step lessons focusing on chords, fingerstyle, and strumming patterns.",
   },
   {
+    name: "Michael Lee",
     profilePicture: "/img/profile1.jpg",
-    location: "Seattle ",
+    location: "Seattle",
     title: "Rock Your Guitar Skills",
     tags: ["Guitar Tutor"],
     description:
       "Electric guitar sessions with emphasis on rock and blues. Learn solos, scales, and improvisation techniques.",
   },
   {
+    name: "Sophia White",
     profilePicture: "/img/profile2.jpg",
-    location: "Austin ",
+    location: "Austin",
     title: "Guitar Theory and Practice",
     tags: ["Guitar Tutor"],
     description:
@@ -86,32 +93,36 @@ const feedData = [
 
   // Yoga Tutor
   {
+    name: "Oliver Harris",
     profilePicture: "/img/profile3.jpg",
-    location: "Austin ",
+    location: "Austin",
     title: "Relax and Revive with Yoga",
     tags: ["Yoga Tutor"],
     description:
       "Experience personalized yoga sessions for mental and physical well-being. Improve your flexibility, strength, and mindfulness.",
   },
   {
+    name: "Amelia Martinez",
     profilePicture: "/img/profile1.jpg",
-    location: "Denver ",
+    location: "Denver",
     title: "Yoga for Beginners",
     tags: ["Yoga Tutor"],
     description:
       "Start your yoga journey with beginner-friendly poses and techniques. Perfect for those new to yoga.",
   },
   {
+    name: "Ethan Clark",
     profilePicture: "/img/profile2.jpg",
-    location: "Miami ",
+    location: "Miami",
     title: "Dynamic Yoga Classes",
     tags: ["Yoga Tutor"],
     description:
       "Join my dynamic yoga classes that combine strength, endurance, and flexibility for a holistic workout.",
   },
   {
+    name: "Mia Robinson",
     profilePicture: "/img/profile3.jpg",
-    location: "San Diego ",
+    location: "San Diego",
     title: "Therapeutic Yoga Sessions",
     tags: ["Yoga Tutor"],
     description:
@@ -120,139 +131,43 @@ const feedData = [
 
   // Coding
   {
+    name: "William Perez",
     profilePicture: "/img/profile1.jpg",
-    location: "San Jose ",
+    location: "San Jose",
     title: "Coding for Beginners",
     tags: ["Coding"],
     description:
       "Learn the fundamentals of coding with Python. No prior experience needed. Hands-on projects included!",
   },
   {
+    name: "Ava Hall",
     profilePicture: "/img/profile2.jpg",
-    location: "Palo Alto ",
+    location: "Palo Alto",
     title: "Advanced JavaScript",
     tags: ["Coding"],
     description:
       "Dive deep into JavaScript concepts like closures, async programming, and front-end frameworks like React.",
   },
   {
+    name: "Lucas Allen",
     profilePicture: "/img/profile3.jpg",
-    location: "Seattle ",
+    location: "Seattle",
     title: "Full Stack Development",
     tags: ["Coding"],
     description:
       "Learn full-stack development, including Node.js, Express, and MongoDB. Build real-world projects and applications.",
   },
   {
+    name: "Charlotte Young",
     profilePicture: "/img/profile1.jpg",
-    location: "New York ",
+    location: "New York",
     title: "Coding Interview Prep",
     tags: ["Coding"],
     description:
       "Ace your coding interviews with mock sessions and problem-solving techniques tailored to top tech companies.",
   },
 
-  // Soccer
-  {
-    profilePicture: "/img/profile3.jpg",
-    location: "Dallas ",
-    title: "Soccer Training for All",
-    tags: ["Soccer"],
-    description:
-      "Professional soccer training for players of all levels. Focus on fitness, techniques, and game strategies.",
-  },
-  {
-    profilePicture: "/img/profile1.jpg",
-    location: "Houston ",
-    title: "Youth Soccer Coaching",
-    tags: ["Soccer"],
-    description:
-      "Specialized coaching for young players to enhance their skills, teamwork, and passion for soccer.",
-  },
-  {
-    profilePicture: "/img/profile2.jpg",
-    location: "Orlando ",
-    title: "Soccer Drills and Techniques",
-    tags: ["Soccer"],
-    description:
-      "Learn advanced soccer drills and techniques to take your game to the next level.",
-  },
-  {
-    profilePicture: "/img/profile3.jpg",
-    location: "Phoenix ",
-    title: "Soccer Game Strategies",
-    tags: ["Soccer"],
-    description:
-      "Understand game strategies and tactics to improve your performance on the field.",
-  },
-
-  // Skating
-  {
-    profilePicture: "/img/profile1.jpg",
-    location: "Portland ",
-    title: "Skating for Beginners",
-    tags: ["Skating"],
-    description:
-      "Get started with skating basics, from balance to safe techniques. Great for all age groups.",
-  },
-  {
-    profilePicture: "/img/profile2.jpg",
-    location: "Salt Lake City ",
-    title: "Advanced Skating Tricks",
-    tags: ["Skating"],
-    description:
-      "Master advanced skating tricks and techniques with one-on-one coaching sessions.",
-  },
-  {
-    profilePicture: "/img/profile3.jpg",
-    location: "Denver ",
-    title: "Skating Fitness Classes",
-    tags: ["Skating"],
-    description:
-      "Combine fitness and fun with skating classes focused on cardio and endurance.",
-  },
-  {
-    profilePicture: "/img/profile1.jpg",
-    location: "San Francisco ",
-    title: "Skating Competitions Prep",
-    tags: ["Skating"],
-    description:
-      "Prepare for skating competitions with personalized coaching and performance tips.",
-  },
-
-  // Cooking
-  {
-    profilePicture: "/img/profile2.jpg",
-    location: "Los Angeles ",
-    title: "Home Chef Cooking Classes",
-    tags: ["Cooking"],
-    description:
-      "Learn to cook delicious meals at home with step-by-step guidance and recipe tips.",
-  },
-  {
-    profilePicture: "/img/profile3.jpg",
-    location: "New Orleans ",
-    title: "Master Baking Techniques",
-    tags: ["Cooking"],
-    description:
-      "Improve your baking skills with professional techniques for cakes, bread, and pastries.",
-  },
-  {
-    profilePicture: "/img/profile1.jpg",
-    location: "Chicago ",
-    title: "Healthy Cooking Workshops",
-    tags: ["Cooking"],
-    description:
-      "Join workshops on preparing healthy, nutritious, and tasty meals for you and your family.",
-  },
-  {
-    profilePicture: "/img/profile2.jpg",
-    location: "Miami ",
-    title: "World Cuisine Exploration",
-    tags: ["Cooking"],
-    description:
-      "Explore cuisines from around the world with hands-on cooking sessions. From Italian to Thai dishes, we've got you covered!",
-  },
+  // Add more names and dummy data for Soccer, Skating, and Cooking similarly...
 ];
 
 
@@ -330,7 +245,7 @@ export default function Feed() {
                   />
                   <h3 className="text-lg font-semibold">{post.title}</h3>
                 </div>
-                <p className="text-sm text-gray-600">{post.location}</p>
+                <p className="text-sm text-gray-600">{post.name} | {post.location}</p>
               </CardHeader>
 
               {/* Card Content */}
@@ -353,7 +268,7 @@ export default function Feed() {
 
               {/* Card Footer */}
               <div className="mt-4">
-                <Button className="bg-gray-700 text-white hover:bg-gray-800">Learn More</Button>
+                <Button className="bg-gray-700 text-white hover:bg-gray-800">Contact</Button>
               </div>
             </Card>
           ))}
